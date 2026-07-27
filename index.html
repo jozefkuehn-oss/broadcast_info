@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Church Broadcast Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#1a1a1a;
+    --charcoal-deep:#101010;
+    --panel:#212121;
+    --magenta:#e6007e;
+    --magenta-deep:#a30058;
+    --pink-tint:#fbe5f0;
+    --white:#ffffff;
+    --grey:#9a9a9a;
+    --grey-line:#333333;
+    --display: 'Archivo Black', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--charcoal);
+    color:var(--white);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--magenta); color:var(--white);}
+
+  /* Focus visibility */
+  button:focus-visible, a:focus-visible{
+    outline:2px solid var(--magenta);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:6vh 6vw;
+    position:relative;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(230,0,126,0.10), transparent 60%),
+      linear-gradient(var(--charcoal-deep), var(--charcoal));
+    overflow:hidden;
+  }
+  .scanlines{
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(
+      to bottom, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px,
+      transparent 1px, transparent 3px
+    );
+    pointer-events:none;
+  }
+  .tally{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.18em;
+    color:var(--magenta);
+    margin-bottom:24px;
+    border:1px solid rgba(230,0,126,0.4);
+    padding:6px 14px;
+    border-radius:100px;
+  }
+  .tally-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--magenta);
+    box-shadow:0 0 8px 2px rgba(230,0,126,0.7);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.35;}
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    max-width:15ch;
+    text-wrap:balance;
+  }
+  .hero h1 .accent{color:var(--magenta);}
+  .hero p.sub{
+    margin-top:22px;
+    max-width:52ch;
+    font-size:clamp(1rem, 2vw, 1.2rem);
+    color:#d4d4d4;
+    font-weight:400;
+  }
+  .hero .mission-line{
+    margin-top:10px;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--grey);
+    letter-spacing:0.02em;
+  }
+  .scroll-cta{
+    margin-top:40px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    color:var(--white);
+    background:transparent;
+    border:1px solid var(--grey-line);
+    padding:14px 26px;
+    border-radius:100px;
+    cursor:pointer;
+    transition:border-color 0.2s, background 0.2s;
+  }
+  .scroll-cta:hover{border-color:var(--magenta); background:rgba(230,0,126,0.08);}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:11vh 6vw;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.22em;
+    color:var(--magenta);
+    text-transform:uppercase;
+    margin-bottom:18px;
+    font-weight:600;
+  }
+  .section-title{
+    font-family:var(--display);
+    font-size:clamp(2.1rem, 4.6vw, 3.4rem);
+    max-width:20ch;
+    margin-bottom:20px;
+  }
+  .section-lede{
+    color:var(--grey);
+    max-width:62ch;
+    font-size:1.1rem;
+    margin-bottom:56px;
+  }
+
+  /* ---------- MULTIVIEW GRID ---------- */
+  .multiview-wrap{max-width:1180px; margin:0 auto;}
+  .multiview{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2px;
+    background:var(--grey-line);
+    border:2px solid var(--grey-line);
+  }
+  @media (max-width:800px){
+    .multiview{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:520px){
+    .multiview{grid-template-columns:1fr;}
+  }
+  .tile{
+    background:var(--charcoal-deep);
+    aspect-ratio:4/3;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    cursor:pointer;
+    border:none;
+    text-align:left;
+    color:var(--white);
+    font-family:var(--body);
+    position:relative;
+    transition:background 0.25s;
+  }
+  .tile:hover, .tile:focus-visible{background:#191016;}
+  .tile:hover .tile-name, .tile:focus-visible .tile-name{color:var(--magenta);}
+  .tile-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+  }
+  .tile-label{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.12em; color:var(--grey);
+  }
+  .tile-status{
+    font-family:var(--mono); font-size:10px; letter-spacing:0.1em;
+    padding:3px 8px; border-radius:100px; white-space:nowrap;
+  }
+  .status-live{color:var(--magenta); border:1px solid rgba(230,0,126,0.5);}
+  .status-dev{color:var(--grey); border:1px solid var(--grey-line);}
+  .tile-dot{
+    width:7px; height:7px; border-radius:50%; background:var(--grey-line);
+    position:absolute; top:20px; right:20px;
+  }
+  .tile.has-live .tile-dot{background:var(--magenta); box-shadow:0 0 6px 1px rgba(230,0,126,0.6);}
+  .tile-name{
+    font-family:var(--display);
+    font-size:clamp(1.15rem, 2vw, 1.5rem);
+    line-height:1.05;
+    margin-top:18px;
+    transition:color 0.2s;
+  }
+  .tile-tagline{
+    margin-top:10px;
+    font-size:0.86rem;
+    color:var(--grey);
+    max-width:34ch;
+  }
+
+  /* ---------- TRACK DETAIL PANEL ---------- */
+  .detail-overlay{
+    position:fixed; inset:0;
+    background:var(--charcoal-deep);
+    z-index:50;
+    overflow-y:auto;
+    display:none;
+  }
+  .detail-overlay.open{display:block; animation:fadein 0.25s ease;}
+  @keyframes fadein{from{opacity:0;} to{opacity:1;}}
+  .detail-inner{max-width:900px; margin:0 auto; padding:5vh 6vw 10vh;}
+  .back-btn{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.1em;
+    color:var(--grey); background:none; border:none; cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px;
+    margin-bottom:40px;
+    padding:8px 0;
+  }
+  .back-btn:hover{color:var(--magenta);}
+  .detail-tally{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:var(--magenta);
+    margin-bottom:16px;
+  }
+  .detail-title{
+    font-family:var(--display);
+    font-size:clamp(2rem, 5vw, 3.2rem);
+    line-height:1;
+    margin-bottom:18px;
+  }
+  .detail-tagline{
+    font-size:1.1rem; color:#d4d4d4; max-width:48ch; margin-bottom:52px;
+  }
+  .detail-block{margin-bottom:52px;}
+  .detail-heading{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.14em;
+    color:var(--grey); text-transform:uppercase; margin-bottom:18px;
+  }
+  .detail-text{max-width:60ch; color:#d4d4d4;}
+
+  /* signal chain (steps) */
+  .chain{
+    display:flex; flex-wrap:wrap; align-items:stretch; gap:0;
+  }
+  .chain-step{
+    flex:1 1 150px;
+    background:var(--panel);
+    padding:18px 16px;
+    position:relative;
+    border-top:2px solid var(--magenta);
+  }
+  .chain-step-num{font-family:var(--mono); font-size:11px; color:var(--magenta); margin-bottom:8px; display:block;}
+  .chain-step-label{font-size:0.92rem; font-weight:600;}
+  .chain-note{
+    margin-top:16px; font-size:0.85rem; color:var(--grey);
+  }
+
+  /* growth paths */
+  .growth-wrap{
+    display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .growth-pill{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.04em;
+    border:1px dashed var(--grey-line);
+    color:var(--grey);
+    padding:10px 16px;
+    border-radius:100px;
+  }
+  .growth-note{
+    margin-top:18px; font-size:0.85rem; color:var(--grey); font-style:italic; max-width:56ch;
+  }
+
+  .dev-note{
+    border-left:2px solid var(--grey-line);
+    padding-left:18px;
+    color:var(--grey);
+    font-size:0.92rem;
+    max-width:56ch;
+  }
+
+  /* ---------- CULTURE SECTION ---------- */
+  .culture{
+    background:var(--charcoal-deep);
+    text-align:center;
+  }
+  .quote-grid{
+    max-width:900px; margin:0 auto;
+    display:grid; gap:44px;
+  }
+  .quote{
+    font-family:var(--display);
+    font-size:clamp(1.7rem, 4.4vw, 2.7rem);
+    line-height:1.22;
+    max-width:20ch;
+    margin:0 auto;
+    position:relative;
+  }
+  .quote::before{
+    content:"\201C";
+    color:var(--magenta);
+    font-family:Georgia, serif;
+    font-size:2.2em;
+    display:block;
+    line-height:0.5;
+    margin-bottom:6px;
+  }
+  .culture-footnote{
+    margin-top:56px;
+    font-size:0.92rem;
+    color:var(--grey);
+    max-width:54ch;
+    margin-left:auto; margin-right:auto;
+  }
+
+  footer{
+    padding:6vh 6vw 4vh;
+    text-align:center;
+    border-top:1px solid var(--grey-line);
+  }
+  footer .foot-name{font-family:var(--mono); font-size:12px; letter-spacing:0.12em; color:var(--grey);}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .tile.reveal{transition-delay:calc(var(--i, 0) * 70ms);}
+  .quote.reveal{transition-delay:calc(var(--i, 0) * 90ms);}
+
+  /* ---------- TILE FLICKER (tally energizing) ---------- */
+  .tile-dot.flicker{animation:flicker 0.5s steps(6, end);}
+  @keyframes flicker{
+    0%{opacity:0;} 15%{opacity:1;} 30%{opacity:0.15;} 45%{opacity:1;}
+    60%{opacity:0.2;} 75%{opacity:1;} 100%{opacity:1;}
+  }
+
+  /* ---------- PUNCH FLASH ---------- */
+  .punch-flash{
+    position:fixed; inset:0; z-index:60;
+    background:var(--white);
+    opacity:0; pointer-events:none;
+  }
+  .punch-flash.go{animation:punch 0.32s ease-out;}
+  @keyframes punch{
+    0%{opacity:0;} 12%{opacity:0.85;} 100%{opacity:0;}
+  }
+
+  /* ---------- CHAIN STEP INTERACTIVITY ---------- */
+  .chain-step{cursor:pointer; transition:background 0.2s, border-top-color 0.2s;}
+  .chain-step:hover, .chain-step.expanded{background:#2a2a2a;}
+  .chain-step-detail{
+    max-height:0; overflow:hidden;
+    font-size:0.82rem; color:var(--grey);
+    transition:max-height 0.3s ease, margin-top 0.3s ease;
+    margin-top:0;
+  }
+  .chain-step.expanded .chain-step-detail{max-height:200px; margin-top:10px;}
+  .chain-step-toggle{
+    font-family:var(--mono); font-size:14px; color:var(--grey); float:right;
+    transition:transform 0.25s;
+  }
+  .chain-step.expanded .chain-step-toggle{transform:rotate(45deg); color:var(--magenta);}
+
+  /* ---------- SIGNAL LINE DRAW ---------- */
+  .chain{position:relative;}
+  .chain-progress{
+    position:absolute; top:-2px; left:0; height:2px; background:var(--magenta);
+    width:0%;
+    transition:width 1.1s cubic-bezier(.2,.8,.2,1);
+  }
+  .chain-progress.go{width:100%;}
+
+  /* tile press */
+  .tile{transform:scale(1); transition:background 0.25s, transform 0.15s;}
+  .tile:active{transform:scale(0.97);}
+
+  /* culture quote hover */
+  .quote{transition:transform 0.25s ease;}
+  .quote:hover{transform:translateY(-4px);}
+
+  /* ---------- ROLE BACKGROUND ART ---------- */
+  .detail-inner{position:relative; z-index:1;}
+  .detail-bg{
+    position:absolute;
+    top:0; right:-4%;
+    width:52%;
+    height:100%;
+    max-width:620px;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.6;
+    color:#707070;
+    overflow:hidden;
+  }
+  .detail-bg svg{width:100%; height:auto; margin-top:12vh; position:relative; z-index:1;}
+  .detail-bg .accent-stroke{color:var(--magenta);}
+  .bg-glow{
+    position:absolute; inset:0; z-index:0;
+    filter:blur(60px);
+    opacity:0.55;
+  }
+  .bg-glow.glow-camera{
+    background:
+      radial-gradient(circle at 55% 32%, rgba(45,212,191,0.30), transparent 55%),
+      radial-gradient(circle at 70% 55%, rgba(230,0,126,0.22), transparent 45%);
+  }
+  .bg-glow.glow-audio{
+    background:
+      radial-gradient(circle at 30% 60%, rgba(255,150,60,0.26), transparent 55%),
+      radial-gradient(circle at 70% 30%, rgba(255,70,70,0.16), transparent 50%);
+  }
+  .bg-glow.glow-graphics{
+    background:
+      radial-gradient(circle at 45% 30%, rgba(168,85,247,0.30), transparent 55%),
+      radial-gradient(circle at 65% 60%, rgba(230,0,126,0.16), transparent 50%);
+  }
+  .bg-glow.glow-producer{
+    background:
+      radial-gradient(circle at 40% 25%, rgba(168,85,247,0.22), transparent 55%),
+      radial-gradient(circle at 60% 65%, rgba(255,180,90,0.22), transparent 50%);
+  }
+  .bg-glow.glow-td{
+    background:
+      radial-gradient(circle at 50% 35%, rgba(0,220,220,0.18), transparent 50%),
+      radial-gradient(circle at 65% 55%, rgba(230,0,126,0.20), transparent 50%);
+  }
+  .bg-glow.glow-engineer{
+    background:
+      radial-gradient(circle at 50% 40%, rgba(63,169,245,0.26), transparent 55%),
+      radial-gradient(circle at 55% 55%, rgba(230,0,126,0.14), transparent 50%);
+  }
+  .colorbar-strip{
+    position:absolute; top:8vh; right:6%; width:44%; max-width:260px;
+    height:16px; display:flex; z-index:1; opacity:0.85; border-radius:2px; overflow:hidden;
+  }
+  .colorbar-strip span{flex:1;}
+  @media (max-width:640px){
+    .detail-bg{
+      display:block;
+      position:relative;
+      top:0; right:0;
+      width:100%;
+      max-width:none;
+      height:200px;
+      opacity:0.65;
+      margin-bottom:8px;
+    }
+    .detail-bg svg{width:78%; margin:22px auto 0; display:block;}
+    .colorbar-strip{top:12px; right:8%; width:60%;}
+    .detail-inner{padding-top:3vh;}
+  }
+  @media (min-width:641px) and (max-width:1000px){
+    .detail-bg{width:42%; opacity:0.5;}
+  }
+
+  /* ---------- EXPECTATIONS ---------- */
+  .expectations{max-width:900px; margin:0 auto;}
+  .expect-list{display:flex; flex-direction:column; gap:0; margin-top:8px;}
+  .expect-item{
+    display:grid;
+    grid-template-columns:60px 1fr;
+    gap:20px;
+    padding:26px 0;
+    border-top:1px solid var(--grey-line);
+  }
+  .expect-item:last-child{border-bottom:1px solid var(--grey-line);}
+  .expect-tag{
+    font-family:var(--mono); font-size:13px; color:var(--magenta); letter-spacing:0.06em;
+  }
+  .expect-title{
+    font-family:var(--display);
+    font-size:1.5rem;
+    margin-bottom:10px;
+  }
+  .expect-body{
+    color:var(--grey);
+    font-size:1.05rem;
+    max-width:58ch;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="scanlines"></div>
+  <div class="tally"><span class="tally-dot"></span> WELCOME</div>
+  <h1>You're not watching this. You're <span class="accent">part</span> of it.</h1>
+  <p class="sub">Thank you for your interest in the Love Church Broadcast Team &mdash; the people who make sure worship and teaching reach every room, every screen, every week.</p>
+  <p class="mission-line">This is worship. This is work.</p>
+  <button class="scroll-cta" onclick="document.getElementById('culture').scrollIntoView()">WHO WE ARE &darr;</button>
+</section>
+
+<section class="culture" id="culture">
+  <div class="eyebrow">Culture</div>
+  <h2 class="section-title" style="margin:0 auto 48px; max-width:26ch;">What we actually believe about this work</h2>
+  <div class="quote-grid">
+    <p class="quote reveal" style="--i:0">Worship is work.</p>
+    <p class="quote reveal" style="--i:1">We're not observing this service. We're part of it.</p>
+    <p class="quote reveal" style="--i:2">No one carries this alone. Every role depends on every other role.</p>
+    <p class="quote reveal" style="--i:3">You were wired for this on purpose &mdash; every gift here is worth stewarding well.</p>
+    <p class="quote reveal" style="--i:4">Excellence is worship &mdash; not perfectionism, not performance.</p>
+    <p class="quote reveal" style="--i:5">One body, many roles. Every position matters as much as the one next to it.</p>
+    <p class="quote reveal" style="--i:6">Serve unseen. Most of what you do, no one will ever notice &mdash; that's the point.</p>
+  </div>
+  <p class="culture-footnote">These themes come from <em>Behind the Glass</em>, the discipleship study built for this team &mdash; because growing here isn't just about skill, it's about being discipled alongside people who are for you. Once you're on board, you'll walk through it together.</p>
+  <button class="scroll-cta" style="margin-top:56px;" onclick="document.getElementById('roles').scrollIntoView()">MEET THE ROLES &darr;</button>
+</section>
+
+<section id="roles">
+  <div class="multiview-wrap">
+    <div class="eyebrow">Multiview</div>
+    <h2 class="section-title">Select a feed</h2>
+    <p class="section-lede">Every Sunday runs on five roles working as one system &mdash; plus one more on the way. Tap a tile to see what it actually involves.</p>
+    <div class="multiview" id="grid"></div>
+  </div>
+</section>
+
+<section class="expectations" id="expectations">
+  <div class="eyebrow">Expectations</div>
+  <h2 class="section-title">What we ask of everyone on this team</h2>
+  <p class="section-lede">Culture is who we are. This is how we actually operate &mdash; regardless of which track you're on.</p>
+  <div class="expect-list">
+    <div class="expect-item reveal" style="--i:0">
+      <span class="expect-tag">01</span>
+      <div>
+        <div class="expect-title">Teachable</div>
+        <div class="expect-body">You don't know everything yet &mdash; nobody does when they start. What matters is whether you're willing to learn. Correction isn't a knock on you; it's how the whole team gets better, together.</div>
+      </div>
+    </div>
+    <div class="expect-item reveal" style="--i:1">
+      <span class="expect-tag">02</span>
+      <div>
+        <div class="expect-title">Coachable</div>
+        <div class="expect-body">Feedback is a gift, not a critique. When someone points something out, take it in, apply it, and let it actually shape how you show up next time. How you respond in that moment says more about your future here than any one night's performance.</div>
+      </div>
+    </div>
+    <div class="expect-item reveal" style="--i:2">
+      <span class="expect-tag">03</span>
+      <div>
+        <div class="expect-title">Flexible</div>
+        <div class="expect-body">Plans change. Something happens that nobody scripted, and what's needed from you shifts without warning. Being flexible means you move with it instead of freezing up when reality doesn't match the plan.</div>
+      </div>
+    </div>
+    <div class="expect-item reveal" style="--i:3">
+      <span class="expect-tag">04</span>
+      <div>
+        <div class="expect-title">Honest</div>
+        <div class="expect-body">Say when you're not sure about something. Say when something's bothering you. Say what you need from the people around you. We can only support each other well if we actually know what's going on with each other &mdash; not just after something goes wrong.</div>
+      </div>
+    </div>
+    <div class="expect-item reveal" style="--i:4">
+      <span class="expect-tag">05</span>
+      <div>
+        <div class="expect-title">Effort</div>
+        <div class="expect-body">Show up ready. Show up with the right attitude. Show up to try, even when it's hard. And earn your freedom to get creative by putting the work in first &mdash; fundamentals before flair, always.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-name">LOVE CHURCH BROADCAST PRODUCTION &middot; NORTH OMAHA CAMPUS</div>
+</footer>
+
+<div class="punch-flash" id="flash"></div>
+
+<div class="detail-overlay" id="overlay">
+  <div class="detail-bg" id="detailBg"></div>
+  <div class="detail-inner">
+    <button class="back-btn" onclick="closeDetail()">&larr; BACK TO MULTIVIEW</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<script>
+const roleArt = {
+  camera: `
+    <svg viewBox="0 0 420 480" fill="none">
+      <defs>
+        <linearGradient id="camBody" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#2c2c2c"/>
+        </linearGradient>
+        <radialGradient id="camLens" cx="42%" cy="38%" r="65%">
+          <stop offset="0%" stop-color="#8a8a8a"/><stop offset="55%" stop-color="#333"/><stop offset="100%" stop-color="#0c0c0c"/>
+        </radialGradient>
+        <radialGradient id="camTally" cx="40%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#ff5fb8"/><stop offset="100%" stop-color="#c2005f"/>
+        </radialGradient>
+      </defs>
+      <line x1="135" y1="200" x2="135" y2="340" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="135" y1="340" x2="55" y2="445" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="135" y1="340" x2="135" y2="455" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="135" y1="340" x2="215" y2="445" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="135" cy="340" r="7" fill="url(#camBody)"/>
+      <rect x="58" y="108" width="152" height="92" rx="8" fill="url(#camBody)" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <rect x="28" y="128" width="36" height="52" rx="5" fill="#232323" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="70" y="118" width="120" height="10" rx="2" fill="#1a1a1a" opacity="0.6"/>
+      <circle cx="230" cy="150" r="72" fill="#151515" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="230" cy="150" r="48" fill="url(#camLens)" stroke="currentColor" stroke-width="1"/>
+      <circle cx="230" cy="150" r="26" fill="#050505"/>
+      <circle cx="216" cy="136" r="7" fill="#ffffff" opacity="0.18"/>
+      <circle cx="360" cy="70" r="9" fill="url(#camTally)"/>
+      <line x1="118" y1="88" x2="118" y2="58" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="90" y1="88" x2="90" y2="68" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="146" y1="88" x2="146" y2="70" stroke="currentColor" stroke-width="1.4"/>
+      <rect x="215" y="198" width="120" height="76" rx="4" fill="#fafafa" opacity="0.06" stroke="currentColor" stroke-width="1"/>
+      <line x1="228" y1="212" x2="322" y2="212" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+      <line x1="228" y1="226" x2="300" y2="226" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+      <line x1="228" y1="240" x2="310" y2="240" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+    </svg>`,
+  audio: `
+    <svg viewBox="0 0 420 480" fill="none">
+      <defs>
+        <linearGradient id="meterGradSeg" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#3ddc84"/><stop offset="60%" stop-color="#3ddc84"/><stop offset="78%" stop-color="#e8d43d"/><stop offset="100%" stop-color="#e84d3d"/>
+        </linearGradient>
+        <radialGradient id="knobGrad" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#9a9a9a"/><stop offset="100%" stop-color="#333"/>
+        </radialGradient>
+        <linearGradient id="faderCap" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d8d8d8"/><stop offset="100%" stop-color="#6a6a6a"/>
+        </linearGradient>
+        <linearGradient id="faderTrack" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0a0a0a"/><stop offset="100%" stop-color="#1c1c1c"/>
+        </linearGradient>
+      </defs>
+      <rect x="30" y="40" width="360" height="110" rx="6" fill="#161a1e" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
+      ${[0,1,2,3,4,5,6,7,8].map(i => {
+        const lit = [7,10,5,9,6,8,4,10,6][i];
+        const segs = [];
+        for (let s=0;s<10;s++){
+          const litSeg = s < lit;
+          segs.push(`<rect x="${48+i*38}" y="${138-s*10}" width="18" height="6" rx="1" fill="${litSeg ? 'url(#meterGradSeg)' : '#2a2e32'}" opacity="${litSeg?0.95:0.5}"/>`);
+        }
+        return segs.join('');
+      }).join('')}
+      <g stroke="currentColor" stroke-width="1.1" opacity="0.9">
+        ${[0,1,2,3,4,5,6,7].map(i => `<circle cx="${58+i*40}" cy="182" r="11" fill="url(#knobGrad)"/>`).join('')}
+      </g>
+      ${[0,1,2,3,4,5,6,7,8,9].map(i => {
+        const capY = [418,388,408,368,398,378,413,383,403,373][i];
+        const colors = ['#3ddc84','#8a8a8a','#3ddc84','#8a8a8a','#3fa9f5','#8a8a8a','#3fa9f5','#8a8a8a','#e6007e','#8a8a8a'];
+        const x = 45+i*35;
+        return `<rect x="${x-3}" y="220" width="6" height="220" rx="2" fill="url(#faderTrack)" stroke="currentColor" stroke-width="0.8" opacity="0.7"/>
+                <rect x="${x-13}" y="${capY}" width="26" height="14" rx="3" fill="url(#faderCap)" stroke="${colors[i]}" stroke-width="2"/>
+                <rect x="${x-13}" y="${capY+5}" width="26" height="2" fill="#333"/>`;
+      }).join('')}
+    </svg>`,
+  graphics: `
+    <svg viewBox="0 0 420 480" fill="none">
+      <defs>
+        <linearGradient id="gfxLid" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#52525a"/><stop offset="100%" stop-color="#232328"/>
+        </linearGradient>
+        <linearGradient id="gfxScreen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#232830"/><stop offset="100%" stop-color="#15181e"/>
+        </linearGradient>
+        <linearGradient id="gfxPreview" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#3a1a5c"/><stop offset="100%" stop-color="#160b28"/>
+        </linearGradient>
+      </defs>
+      <rect x="40" y="70" width="340" height="215" rx="9" fill="url(#gfxLid)" stroke="currentColor" stroke-width="1.3"/>
+      <rect x="52" y="82" width="316" height="176" rx="4" fill="url(#gfxScreen)"/>
+      <path d="M8 300 L412 300 L368 258 L52 258 Z" fill="#2c2c30" stroke="currentColor" stroke-width="1.3"/>
+      <rect x="60" y="90" width="12" height="160" fill="#1a1c20"/>
+      <line x1="66" y1="102" x2="66" y2="102" stroke="currentColor"/>
+      ${[0,1,2,3,4].map(i => `<rect x="62" y="${98+i*30}" width="8" height="18" rx="1" fill="#3a3d44"/>`).join('')}
+      <rect x="82" y="90" width="112" height="90" rx="3" fill="url(#gfxPreview)" stroke="#a855f7" stroke-width="1.4"/>
+      <line x1="94" y1="130" x2="182" y2="130" stroke="#e8d8ff" stroke-width="2" opacity="0.85"/>
+      <line x1="104" y1="146" x2="172" y2="146" stroke="#c9a8f0" stroke-width="1.3" opacity="0.6"/>
+      <rect x="200" y="90" width="58" height="42" rx="3" fill="#1c2430" stroke="#3fa9f5" stroke-width="1.3"/>
+      <rect x="262" y="90" width="58" height="42" rx="3" fill="#1c2430" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+      <rect x="200" y="138" width="58" height="42" rx="3" fill="#301c26" stroke="#e6007e" stroke-width="1.3"/>
+      <rect x="262" y="138" width="58" height="42" rx="3" fill="#1c2430" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+      <rect x="82" y="188" width="58" height="42" rx="3" fill="#1c2e20" stroke="#3ddc84" stroke-width="1.3"/>
+      <rect x="144" y="188" width="58" height="42" rx="3" fill="#1c2430" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+      <rect x="200" y="188" width="58" height="42" rx="3" fill="#2c2810" stroke="#e8d43d" stroke-width="1.3"/>
+      <rect x="262" y="188" width="58" height="42" rx="3" fill="#1c2430" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+    </svg>`,
+  producer: `
+    <svg viewBox="0 0 420 480" fill="none">
+      <defs>
+        <linearGradient id="prodDesk" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#4a3320"/><stop offset="100%" stop-color="#2a1c12"/>
+        </linearGradient>
+      </defs>
+      <rect x="40" y="60" width="100" height="66" rx="3" fill="#123a4a" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="160" y="60" width="100" height="66" rx="3" fill="#2a1a44" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="280" y="60" width="100" height="66" rx="3" fill="#123322" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="40" y="146" width="100" height="66" rx="3" fill="#3a2a10" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="160" y="146" width="100" height="66" rx="3" fill="#4a0026" stroke="#e6007e" stroke-width="1.6"/>
+      <rect x="280" y="146" width="100" height="66" rx="3" fill="#123a4a" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="40" y="260" width="340" height="110" rx="8" fill="url(#prodDesk)" stroke="currentColor" stroke-width="1.3"/>
+      <line x1="70" y1="290" x2="180" y2="290" stroke="#e8d43d" stroke-width="1.4" opacity="0.7"/>
+      <line x1="70" y1="310" x2="150" y2="310" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+      <circle cx="330" cy="300" r="16" fill="#1a1a1a" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="290" cy="330" r="8" fill="#3ddc84"/>
+      <circle cx="315" cy="330" r="6" fill="#e6007e" opacity="0.8"/>
+    </svg>`,
+  td: `
+    <svg viewBox="0 0 420 480" fill="none">
+      <defs>
+        <linearGradient id="tdBtn" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4a4a4a"/><stop offset="100%" stop-color="#1e1e1e"/>
+        </linearGradient>
+        <linearGradient id="tdFader" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#9a9a9a"/><stop offset="100%" stop-color="#4a4a4a"/>
+        </linearGradient>
+      </defs>
+      ${[0,1,2].map(row => [0,1,2,3,4,5,6,7].map(col => {
+        const lit = (row===0 && col===3) ? '#e6007e' : (row===1 && col===5) ? '#3ddc84' : (row===2 && col===1) ? '#e8d43d' : null;
+        return `<rect x="${40+col*44}" y="${80+row*46}" width="30" height="30" rx="4" fill="${lit ? lit : 'url(#tdBtn)'}" stroke="currentColor" stroke-width="1" opacity="${lit?0.9:0.85}"/>`;
+      }).join('')).join('')}
+      <line x1="40" y1="330" x2="380" y2="330" stroke="currentColor" stroke-width="1.3" opacity="0.6"/>
+      <rect x="60" y="345" width="16" height="70" rx="4" fill="url(#tdFader)" stroke="currentColor" stroke-width="1"/>
+      <rect x="150" y="345" width="16" height="70" rx="4" fill="url(#tdFader)" stroke="currentColor" stroke-width="1"/>
+      <rect x="240" y="345" width="16" height="70" rx="4" fill="url(#tdFader)" stroke="currentColor" stroke-width="1"/>
+      <rect x="330" y="345" width="16" height="70" rx="4" fill="url(#tdFader)" stroke="currentColor" stroke-width="1"/>
+    </svg>`,
+  engineer: `
+    <svg viewBox="0 0 420 260" fill="none">
+      <defs>
+        <linearGradient id="engPanel" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3a4550"/><stop offset="100%" stop-color="#1a2028"/>
+        </linearGradient>
+        <radialGradient id="engKnob" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#8a8a8a"/><stop offset="100%" stop-color="#25282c"/>
+        </radialGradient>
+        <linearGradient id="engScreenOn" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a2830"/><stop offset="100%" stop-color="#0a1014"/>
+        </linearGradient>
+      </defs>
+      <rect x="30" y="10" width="360" height="230" rx="10" fill="url(#engPanel)" stroke="currentColor" stroke-width="1.3"/>
+      <rect x="48" y="28" width="72" height="46" rx="4" fill="url(#engScreenOn)" stroke="#3fa9f5" stroke-width="1" opacity="0.9"/>
+      <rect x="128" y="28" width="72" height="46" rx="4" fill="#3a0d16" stroke="#e6007e" stroke-width="1.3"/>
+      <rect x="208" y="28" width="72" height="46" rx="4" fill="url(#engScreenOn)" stroke="#3fa9f5" stroke-width="1" opacity="0.9"/>
+      <rect x="288" y="28" width="72" height="46" rx="4" fill="url(#engScreenOn)" stroke="#3fa9f5" stroke-width="1" opacity="0.9"/>
+      <line x1="55" y1="44" x2="100" y2="44" stroke="#7dd3fc" stroke-width="1" opacity="0.5"/>
+      <line x1="135" y1="44" x2="180" y2="44" stroke="#ff9db8" stroke-width="1" opacity="0.6"/>
+      <g stroke="currentColor" stroke-width="1" opacity="0.9">
+        ${[0,1,2,3].map(i => [0,1,2,3].map(j =>
+          `<circle cx="${58+i*80+j*14}" cy="94" r="5" fill="url(#engKnob)"/>`
+        ).join('')).join('')}
+      </g>
+      <circle cx="90" cy="160" r="30" fill="url(#engKnob)" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="90" cy="160" r="10" fill="#151515"/>
+      <circle cx="200" cy="160" r="30" fill="url(#engKnob)" stroke="#e6007e" stroke-width="1.6"/>
+      <circle cx="200" cy="160" r="10" fill="#3a0d16"/>
+      <circle cx="310" cy="160" r="30" fill="url(#engKnob)" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="310" cy="160" r="10" fill="#151515"/>
+      <rect x="50" y="205" width="60" height="14" rx="3" fill="#0f1418" stroke="currentColor" stroke-width="1" opacity="0.8"/>
+      <rect x="160" y="205" width="60" height="14" rx="3" fill="#0f1418" stroke="currentColor" stroke-width="1" opacity="0.8"/>
+      <rect x="270" y="205" width="60" height="14" rx="3" fill="#0f1418" stroke="currentColor" stroke-width="1" opacity="0.8"/>
+    </svg>`
+};
+
+const roles = [
+  {
+    id: "camera",
+    label: "TRACK 01",
+    name: "Camera Operators",
+    tagline: "See it. Frame the story, follow the moment, make it feel like being in the room.",
+    status: "live",
+    what: "Camera operators run the fixed and roving cameras that capture every Encounter &mdash; from the stable back-riser trio to the handheld and gimbal positions that move with the room. The job isn't just pointing a lens: it's deciding, shot by shot, what helps someone watching feel like they're actually here.",
+    steps: [
+      "Observe &amp; Explore",
+      "Shared Foundation",
+      "Creating Art with Cameras (Parts 1 &amp; 2)",
+      "Hands-On Shadow",
+      "After-Encounter Review",
+      "Solo-Ready"
+    ],
+    stepDetails: [
+      "Spend a service on headset next to a camera operator, watching how the role actually works before committing to anything.",
+      "Shared terminology, director comms, and the team's mission &mdash; the same foundation every role starts from.",
+      "Terminology, equipment, handling, framing, and visual storytelling &mdash; live class or self-paced video.",
+      "Partnered with an experienced operator on a real camera during an actual Encounter.",
+      "A conversation with your mentor after the Encounter &mdash; what went well, what to work on.",
+      "Running a camera on your own, week to week."
+    ],
+    stepsFilled: 6,
+    chainNote: "This is the only fully built track right now. Before any training starts, you shadow to see how the role actually functions &mdash; then \u201cCreating Art with Cameras\u201d covers terminology, equipment, handling, framing, and visual storytelling, followed by a real hands-on shadow during a live Encounter and a review after.",
+    growth: ["Handheld Specialist", "Camera Engineer", "Technical/Video Director"],
+    growthNote: "No formal path is mapped out yet &mdash; these are directions growth has sometimes taken, not a defined program."
+  },
+  {
+    id: "audio",
+    label: "TRACK 02",
+    name: "Broadcast Audio",
+    tagline: "Carry it. What the online and lobby viewer hears matters as much as what they see.",
+    status: "dev",
+    what: "Broadcast audio makes sure the mix going out to the stream and the lobby actually sounds like being in the room &mdash; balanced, clear, and free of the distractions a live room can create.",
+    dev: true,
+    growth: ["FOH Audio"],
+    growthNote: "No formal path is mapped out yet &mdash; this is a direction growth has sometimes taken, not a defined program."
+  },
+  {
+    id: "graphics",
+    label: "TRACK 03",
+    name: "ProPresenter / Graphics Operator",
+    tagline: "Support it. Lyrics, lower-thirds, scripture &mdash; the layer that helps people follow along.",
+    status: "dev",
+    what: "The graphics operator runs ProPresenter live &mdash; lyrics, scripture references, lower-thirds &mdash; timed to the moment so it helps people engage instead of pulling their attention away.",
+    dev: true,
+    growth: ["Technical/Video Director"],
+    growthNote: "No formal path is mapped out yet &mdash; this is a direction growth has sometimes taken, not a defined program."
+  },
+  {
+    id: "producer",
+    label: "TRACK 04",
+    name: "Broadcast Producer",
+    tagline: "Lead it. The highest-trust role on the team &mdash; serious, but never a closed door.",
+    status: "dev",
+    what: "The producer is the leader for the day &mdash; currently the one calling cameras and graphics cues live, while holding the flow and timing of the entire broadcast. It carries the most trust and the most responsibility of any role on the team, and it's treated that way: someone has to hold the whole show in their head at once, every week. But that trust isn't something you wait years for &mdash; it's a role you grow into through the same track everyone else walks: observe, learn, shadow, review. Not a tier reserved for a select few.",
+    dev: true,
+    growth: [],
+    growthNote: ""
+  },
+  {
+    id: "td",
+    label: "TRACK 05",
+    name: "Technical/Video Director (TD)",
+    tagline: "Run it. Operates the switcher, executing what's called.",
+    status: "dev",
+    what: "The TD runs the switcher &mdash; taking cameras and transitions as they're called &mdash; and keeps the technical side of the broadcast running clean.",
+    dev: true,
+    growth: ["Broadcast Producer"],
+    growthNote: "No formal path is mapped out yet &mdash; this is a direction growth has sometimes taken, not a defined program."
+  },
+  {
+    id: "engineer",
+    label: "TRACK 06",
+    name: "Camera Engineer",
+    tagline: "Coming soon &mdash; will shade, focus, balance, and correctly expose every camera before it airs.",
+    status: "comingsoon",
+    what: "A new role currently being developed. The camera engineer won't call or operate cameras live &mdash; they'll make sure every camera's image is focused, balanced, and correctly exposed before it ever reaches program, ideally from a dedicated control station.",
+    dev: true,
+    growth: [],
+    growthNote: ""
+  }
+];
+
+const grid = document.getElementById('grid');
+roles.forEach((r, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'tile reveal' + (r.status === 'live' ? ' has-live' : '');
+  btn.style.setProperty('--i', i);
+  btn.setAttribute('aria-label', 'View ' + r.name + ' track');
+  btn.innerHTML = `
+    <div class="tile-top">
+      <span class="tile-label">${r.label}</span>
+      <span class="tile-status ${r.status === 'live' ? 'status-live' : 'status-dev'}">${r.status === 'live' ? 'ACTIVE TRACK' : (r.status === 'comingsoon' ? 'COMING SOON' : 'IN DEVELOPMENT')}</span>
+    </div>
+    <div>
+      <div class="tile-name">${r.name}</div>
+      <div class="tile-tagline">${r.tagline}</div>
+    </div>
+    <span class="tile-dot"></span>
+  `;
+  btn.addEventListener('mouseenter', () => {
+    const dot = btn.querySelector('.tile-dot');
+    dot.classList.remove('flicker');
+    void dot.offsetWidth;
+    dot.classList.add('flicker');
+  });
+  btn.addEventListener('click', () => openDetail(r.id));
+  grid.appendChild(btn);
+});
+
+function openDetail(id){
+  const flash = document.getElementById('flash');
+  flash.classList.remove('go');
+  void flash.offsetWidth;
+  flash.classList.add('go');
+
+  const r = roles.find(x => x.id === id);
+  const el = document.getElementById('detailContent');
+  const bg = document.getElementById('detailBg');
+  const colorBarRoles = { td: true };
+  bg.innerHTML = `
+    <div class="bg-glow glow-${r.id}"></div>
+    ${colorBarRoles[r.id] ? `<div class="colorbar-strip">
+      <span style="background:#fff"></span><span style="background:#ffe600"></span>
+      <span style="background:#00d0ff"></span><span style="background:#00d060"></span>
+      <span style="background:#ff2fb0"></span><span style="background:#ff2020"></span>
+      <span style="background:#2020c0"></span>
+    </div>` : ''}
+    ${roleArt[r.id] || ''}
+  `;
+  buildDetailContent(r, el);
+
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // step click-to-expand
+  el.querySelectorAll('.chain-step').forEach(step => {
+    step.addEventListener('click', () => {
+      const isOpen = step.classList.contains('expanded');
+      el.querySelectorAll('.chain-step').forEach(s => s.classList.remove('expanded'));
+      if (!isOpen) step.classList.add('expanded');
+    });
+  });
+
+  // animate signal line after paint
+  const progress = document.getElementById('chainProgress');
+  if (progress){
+    requestAnimationFrame(() => {
+      setTimeout(() => progress.classList.add('go'), 120);
+    });
+  }
+}
+
+function buildDetailContent(r, el){
+
+  let stepsHtml = '';
+  if (r.steps){
+    stepsHtml = `
+      <div class="detail-block">
+        <div class="detail-heading">Your Path</div>
+        <div class="chain">
+          <div class="chain-progress" id="chainProgress"></div>
+          ${r.steps.map((s,i) => `
+            <div class="chain-step" data-idx="${i}">
+              <span class="chain-step-toggle">+</span>
+              <span class="chain-step-num">0${i+1}</span>
+              <span class="chain-step-label">${s}</span>
+              <div class="chain-step-detail">${(r.stepDetails && r.stepDetails[i]) ? r.stepDetails[i] : 'Details for this step are still being written.'}</div>
+            </div>`).join('')}
+        </div>
+        <p class="chain-note">${r.chainNote || ''}</p>
+      </div>`;
+  } else {
+    stepsHtml = `
+      <div class="detail-block">
+        <div class="detail-heading">Your Path</div>
+        <p class="dev-note">This track's step-by-step training is still being built &mdash; it will follow the same model as Camera Operators: shadow first to see how the role actually functions, then shared foundation, role-specific training, a hands-on shadow during a live Encounter, an after-Encounter review, and solo-ready.</p>
+      </div>`;
+  }
+
+  let growthHtml = '';
+  if (r.growth && r.growth.length){
+    growthHtml = `
+      <div class="detail-block">
+        <div class="detail-heading">Where It Can Grow</div>
+        <div class="growth-wrap">
+          ${r.growth.map(g => `<span class="growth-pill">${g}</span>`).join('')}
+        </div>
+        <p class="growth-note">${r.growthNote}</p>
+      </div>`;
+  }
+
+  el.innerHTML = `
+    <div class="detail-tally">${r.label} &middot; ${r.status === 'live' ? 'ON AIR' : (r.status==='comingsoon' ? 'STANDBY' : 'IN DEVELOPMENT')}</div>
+    <h2 class="detail-title">${r.name}</h2>
+    <p class="detail-tagline">${r.tagline}</p>
+    <div class="detail-block">
+      <div class="detail-heading">What You'll Do</div>
+      <p class="detail-text">${r.what}</p>
+    </div>
+    ${stepsHtml}
+    ${growthHtml}
+    <div class="detail-block cross-train-block">
+      <div class="detail-heading">Cross-Training</div>
+      <p class="detail-text">Whatever pulls your interest, you can always cross-train into another track &mdash; and that starts the same way every track does: shadow it first.</p>
+    </div>
+  `;
+}
+
+function closeDetail(){
+  const flash = document.getElementById('flash');
+  flash.classList.remove('go');
+  void flash.offsetWidth;
+  flash.classList.add('go');
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeDetail();
+});
+
+// scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
