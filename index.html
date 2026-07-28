@@ -493,6 +493,46 @@
     font-size:1.05rem;
     max-width:58ch;
   }
+
+  /* ---------- SHARED FOUNDATION ---------- */
+  .found-heading{
+    font-family:var(--display);
+    font-size:1.4rem;
+    color:var(--white);
+    margin:36px 0 16px;
+  }
+  .found-list{
+    list-style:none;
+    max-width:70ch;
+  }
+  .found-list li{
+    position:relative;
+    padding-left:22px;
+    margin-bottom:14px;
+    color:var(--grey);
+    font-size:1.05rem;
+    line-height:1.6;
+  }
+  .found-list li::before{
+    content:"\2022";
+    color:var(--magenta);
+    position:absolute; left:0;
+  }
+  .found-body{
+    max-width:70ch;
+    font-size:1.05rem;
+    color:#d4d4d4;
+    margin-bottom:16px;
+    line-height:1.65;
+  }
+  .found-body strong{color:var(--white);}
+  .found-quote{
+    font-family:var(--display);
+    font-size:1.3rem;
+    color:var(--white);
+    max-width:40ch;
+    margin-bottom:36px;
+  }
 </style>
 </head>
 <body>
@@ -519,7 +559,38 @@
     <p class="quote reveal" style="--i:6">Serve unseen. Most of what you do, no one will ever notice &mdash; that's the point.</p>
   </div>
   <p class="culture-footnote">These themes come from <em>Behind the Glass</em>, the discipleship study built for this team &mdash; because growing here isn't just about skill, it's about being discipled alongside people who are for you. Once you're on board, you'll walk through it together.</p>
-  <button class="scroll-cta" style="margin-top:56px;" onclick="document.getElementById('roles').scrollIntoView()">MEET THE ROLES &darr;</button>
+  <button class="scroll-cta" style="margin-top:56px;" onclick="document.getElementById('foundation').scrollIntoView()">OUR MISSION &darr;</button>
+</section>
+
+<section id="foundation">
+  <div class="multiview-wrap">
+    <div class="eyebrow">Shared Foundation</div>
+    <h2 class="section-title">Our mission</h2>
+    <p class="section-lede">Every new person on this team goes through this before any role-specific training starts &mdash; camera, audio, graphics, switcher, or producing. This is what we all share, no matter which track you're on.</p>
+
+    <h3 class="found-heading">Why this team matters</h3>
+    <ul class="found-list">
+      <li>Someone watching from home, a hospital bed, or three states away is having church right now &mdash; the only way they experience it is through what this team creates.</li>
+      <li>The signal also goes to the lobby. Someone standing back there is still part of what's happening, just experiencing it through this team's work instead of in person.</li>
+      <li>Accessibility &mdash; someone who can't physically get into the room still gets to worship because of this team.</li>
+      <li>Outreach &mdash; a clip someone sees this week might be the first five seconds of Love Church they ever encounter.</li>
+    </ul>
+
+    <h3 class="found-heading">Our mission</h3>
+    <p class="found-body"><strong>Whatever your role &mdash; camera, audio, graphics, switcher, producing &mdash; you are not just operating equipment.</strong></p>
+    <ul class="found-list">
+      <li>You are part of worship.</li>
+      <li>You are part of teaching.</li>
+      <li>You eliminate distractions.</li>
+      <li>You help people engage.</li>
+    </ul>
+    <p class="found-body">We don't stand outside worship and help it along &mdash; we're part of it. When the room is engaged, you're engaged. When something shifts, you should feel it before you see it.</p>
+
+    <h3 class="found-heading">Discussion</h3>
+    <p class="found-quote">&ldquo;How does what you do affect what someone experiences from home?&rdquo;</p>
+
+    <button class="scroll-cta" onclick="document.getElementById('roles').scrollIntoView()">MEET THE ROLES &darr;</button>
+  </div>
 </section>
 
 <section id="roles">
