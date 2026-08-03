@@ -142,6 +142,7 @@
     font-size:clamp(2.1rem, 4.6vw, 3.4rem);
     max-width:20ch;
     margin-bottom:20px;
+    text-wrap:balance;
   }
   .section-lede{
     color:var(--grey);
@@ -305,9 +306,10 @@
     font-family:var(--display);
     font-size:clamp(1.7rem, 4.4vw, 2.7rem);
     line-height:1.22;
-    max-width:20ch;
+    max-width:22ch;
     margin:0 auto;
     position:relative;
+    text-wrap:balance;
   }
   .quote::before{
     content:"\201C";
@@ -875,9 +877,26 @@ const roles = [
     label: "TRACK 02",
     name: "Broadcast Audio",
     tagline: "Carry it. What the online and lobby viewer hears matters as much as what they see.",
-    status: "dev",
+    status: "live",
     what: "Broadcast audio makes sure the mix going out to the stream and the lobby actually sounds like being in the room &mdash; balanced, clear, and free of the distractions a live room can create.",
-    dev: true,
+    steps: [
+      "Observe &amp; Explore",
+      "Shared Foundation",
+      "Audio Foundations &amp; Context (Parts 1 &amp; 2)",
+      "Hands-On Shadow",
+      "After-Encounter Review",
+      "Solo-Ready"
+    ],
+    stepDetails: [
+      "Spend a service on headset next to an audio engineer, watching how the role actually works before committing to anything.",
+      "Shared terminology, director comms, and the team's mission &mdash; the same foundation every role starts from.",
+      "General audio terminology, mixer basics and signal flow, the dLive system, mix judgment, and working with the worship team &mdash; live class or self-paced video.",
+      "Partnered with an experienced audio engineer on the real board during an actual Encounter.",
+      "A conversation with your mentor after the Encounter &mdash; what went well, what to work on.",
+      "Running audio on your own, week to week."
+    ],
+    stepsFilled: 6,
+    chainNote: "Before any training starts, you shadow to see how the role actually functions &mdash; then Foundations covers general mixing concepts, and Context &amp; Application covers the dLive system, mix judgment, and working with the worship team, followed by a real hands-on shadow during a live Encounter and a review after.",
     growth: ["FOH Audio"],
     growthNote: "No formal path is mapped out yet &mdash; this is a direction growth has sometimes taken, not a defined program."
   },
@@ -886,9 +905,26 @@ const roles = [
     label: "TRACK 03",
     name: "ProPresenter / Graphics Operator",
     tagline: "Support it. Lyrics, lower-thirds, scripture &mdash; the layer that helps people follow along.",
-    status: "dev",
+    status: "live",
     what: "The graphics operator runs ProPresenter live &mdash; lyrics, scripture references, lower-thirds &mdash; timed to the moment so it helps people engage instead of pulling their attention away.",
-    dev: true,
+    steps: [
+      "Observe &amp; Explore",
+      "Shared Foundation",
+      "Graphics Foundations &amp; Context (Parts 1 &amp; 2)",
+      "Hands-On Shadow",
+      "After-Encounter Review",
+      "Solo-Ready"
+    ],
+    stepDetails: [
+      "Spend a service on headset next to a graphics operator, watching how the role actually works before committing to anything.",
+      "Shared terminology, director comms, and the team's mission &mdash; the same foundation every role starts from.",
+      "ProPresenter basics, Looks &amp; Themes, slide building, cue timing, and working with the TD &mdash; live class or self-paced video.",
+      "Partnered with an experienced graphics operator on the real system during an actual Encounter.",
+      "A conversation with your mentor after the Encounter &mdash; what went well, what to work on.",
+      "Running graphics on your own, week to week."
+    ],
+    stepsFilled: 6,
+    chainNote: "Before any training starts, you shadow to see how the role actually functions &mdash; then Foundations covers the ProPresenter interface, Looks, and slide-building, and Context &amp; Application covers timing, flow, and working with the TD, followed by a real hands-on shadow during a live Encounter and a review after.",
     growth: ["Technical/Video Director"],
     growthNote: "No formal path is mapped out yet &mdash; this is a direction growth has sometimes taken, not a defined program."
   },
@@ -897,9 +933,26 @@ const roles = [
     label: "TRACK 04",
     name: "Broadcast Producer",
     tagline: "Lead it. The highest-trust role on the team &mdash; serious, but never a closed door.",
-    status: "dev",
+    status: "live",
     what: "The producer is the leader for the day &mdash; currently the one calling cameras and graphics cues live, while holding the flow and timing of the entire broadcast. It carries the most trust and the most responsibility of any role on the team, and it's treated that way: someone has to hold the whole show in their head at once, every week. But that trust isn't something you wait years for &mdash; it's a role you grow into through the same track everyone else walks: observe, learn, shadow, review. Not a tier reserved for a select few.",
-    dev: true,
+    steps: [
+      "Observe &amp; Explore",
+      "Shared Foundation",
+      "Producer Foundations &amp; Context (Parts 1 &amp; 2)",
+      "Hands-On Shadow",
+      "After-Encounter Review",
+      "Solo-Ready"
+    ],
+    stepDetails: [
+      "Spend a service on headset next to the Producer, watching how the role actually functions before committing to anything.",
+      "Shared terminology, director comms, and the team's mission &mdash; the same foundation every role starts from.",
+      "Leadership mindset, run-of-show planning, pre-service coordination, cross-department cohesion, calling the show, and handling unscripted moments &mdash; live class or self-paced video.",
+      "Partnered with an experienced Producer during an actual Encounter.",
+      "A conversation with your mentor after the Encounter &mdash; what went well, what to work on.",
+      "Running point on your own, week to week."
+    ],
+    stepsFilled: 6,
+    chainNote: "Before any training starts, you shadow to see how the role actually functions &mdash; then Foundations covers leadership and planning, and Context &amp; Application covers calling the show, unscripted moments, and cross-department coordination, followed by a real hands-on shadow during a live Encounter and a review after.",
     growth: [],
     growthNote: ""
   },
@@ -908,11 +961,28 @@ const roles = [
     label: "TRACK 05",
     name: "Technical/Video Director (TD)",
     tagline: "Run it. Operates the switcher, executing what's called.",
-    status: "dev",
+    status: "live",
     what: "The TD runs the switcher &mdash; taking cameras and transitions as they're called &mdash; and keeps the technical side of the broadcast running clean.",
-    dev: true,
-    growth: ["Broadcast Producer"],
-    growthNote: "No formal path is mapped out yet &mdash; this is a direction growth has sometimes taken, not a defined program."
+    steps: [
+      "Observe &amp; Explore",
+      "Shared Foundation",
+      "TD Foundations &amp; Context (Parts 1 &amp; 2)",
+      "Hands-On Shadow",
+      "After-Encounter Review",
+      "Solo-Ready"
+    ],
+    stepDetails: [
+      "Spend a service on headset next to the TD, watching how the role actually works before committing to anything.",
+      "Shared terminology, director comms, and the team's mission &mdash; the same foundation every role starts from.",
+      "Switcher basics, the ATEM panel, keying, DVEs and SuperSource, transition judgment, and working with the Producer &mdash; live class or self-paced video.",
+      "Partnered with an experienced TD on the real switcher during an actual Encounter.",
+      "A conversation with your mentor after the Encounter &mdash; what went well, what to work on.",
+      "Running the switcher on your own, week to week."
+    ],
+    stepsFilled: 6,
+    chainNote: "Before any training starts, you shadow to see how the role actually functions &mdash; then Foundations covers the switcher and panel, and Context &amp; Application covers transition timing, reading the flow, and working with the Producer, followed by a real hands-on shadow during a live Encounter and a review after.",
+    growth: ["Camera Engineer", "Broadcast Producer"],
+    growthNote: "No formal path is mapped out yet. Reaching Producer specifically always runs through camera operating experience somewhere earlier in the path \u2014 not something you can skip."
   },
   {
     id: "engineer",
@@ -922,8 +992,8 @@ const roles = [
     status: "comingsoon",
     what: "A new role currently being developed. The camera engineer won't call or operate cameras live &mdash; they'll make sure every camera's image is focused, balanced, and correctly exposed before it ever reaches program, ideally from a dedicated control station.",
     dev: true,
-    growth: [],
-    growthNote: ""
+    growth: ["Technical/Video Director"],
+    growthNote: "No formal path is mapped out yet \u2014 this is a direction growth has sometimes taken, not a defined program."
   }
 ];
 
