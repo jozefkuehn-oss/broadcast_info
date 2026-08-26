@@ -496,6 +496,50 @@
     max-width:58ch;
   }
 
+  /* ---------- TALLY BIG HEADLINE ---------- */
+  .tally-headline-wrap{
+    text-align:center;
+    margin-bottom:20px;
+  }
+  .tally-headline{
+    font-family:var(--display);
+    font-size:clamp(3.4rem, 13vw, 8.5rem);
+    line-height:1;
+    color:var(--magenta);
+    letter-spacing:-0.01em;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(14px, 3vw, 34px);
+    margin:20px 0 8px;
+    animation:tallyGlow 2.2s ease-in-out infinite;
+  }
+  @keyframes tallyGlow{
+    0%,100%{text-shadow:0 0 26px rgba(230,0,126,0.55), 0 0 70px rgba(230,0,126,0.22);}
+    50%{text-shadow:0 0 8px rgba(230,0,126,0.3), 0 0 20px rgba(230,0,126,0.08);}
+  }
+  .tally-side-dot{
+    width:clamp(12px, 2.2vw, 20px);
+    height:clamp(12px, 2.2vw, 20px);
+    border-radius:50%;
+    background:var(--magenta);
+    box-shadow:0 0 16px 4px rgba(230,0,126,0.7);
+    flex-shrink:0;
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  .tally-side-dot.delay{animation-delay:0.9s;}
+  .tally-live-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.18em;
+    color:var(--magenta);
+    margin-bottom:8px;
+    border:1px solid rgba(230,0,126,0.4);
+    padding:6px 14px;
+    border-radius:100px;
+  }
+
   /* ---------- SHARED FOUNDATION ---------- */
   .found-heading{
     font-family:var(--display);
@@ -588,6 +632,17 @@
     </ul>
     <p class="found-body">We don't stand outside worship and help it along &mdash; we're part of it. When the room is engaged, you're engaged. When something shifts, you should feel it before you see it.</p>
 
+    <h3 class="found-heading">The 5S Life</h3>
+    <p class="found-body">Everything at Love Church &mdash; including how we serve on this team &mdash; flows out of the 5S Life. As Essentials puts it, we believe everyone should experience God's best for their lives by living it out.</p>
+    <ul class="found-list">
+      <li><strong style="color:var(--white);">Surrendered</strong> &mdash; daily surrendered to God's best.</li>
+      <li><strong style="color:var(--white);">Surrounded</strong> &mdash; growing alongside other believers.</li>
+      <li><strong style="color:var(--white);">Spirit-Led</strong> &mdash; filled to overflowing with God's Spirit.</li>
+      <li><strong style="color:var(--white);">Self-Fed</strong> &mdash; intimacy with God through His Word.</li>
+      <li><strong style="color:var(--white);">Sent</strong> &mdash; constantly looking for the lost.</li>
+    </ul>
+    <p class="found-body">Serving on this team is one of the ways the "Sent" and "Surrounded" parts of that life get lived out &mdash; shoulder to shoulder with a team, actively looking outward instead of just showing up.</p>
+
     <h3 class="found-heading">Discussion</h3>
     <p class="found-quote">&ldquo;How does what you do affect what someone experiences from home?&rdquo;</p>
 
@@ -605,43 +660,95 @@
 </section>
 
 <section class="expectations" id="expectations">
-  <div class="eyebrow">Expectations</div>
-  <h2 class="section-title">What we ask of everyone on this team</h2>
-  <p class="section-lede">Culture is who we are. This is how we actually operate &mdash; regardless of which track you're on.</p>
+  <div class="tally-headline-wrap">
+    <div class="tally-live-badge"><span class="tally-dot"></span> ALWAYS ON</div>
+    <h2 class="tally-headline"><span class="tally-side-dot"></span>#TALLY<span class="tally-side-dot delay"></span></h2>
+  </div>
+  <p class="section-lede" style="text-align:center; margin-left:auto; margin-right:auto;">A tally light tells everyone a camera is live. #TALLY is what should already be on in you &mdash; whether the camera's rolling or not. It's the same five things we've always asked of this team, now in one word worth remembering.</p>
   <div class="expect-list">
     <div class="expect-item reveal" style="--i:0">
-      <span class="expect-tag">01</span>
+      <span class="expect-tag">T</span>
       <div>
         <div class="expect-title">Teachable</div>
         <div class="expect-body">You don't know everything yet &mdash; nobody does when they start. What matters is whether you're willing to learn. Correction isn't a knock on you; it's how the whole team gets better, together.</div>
       </div>
     </div>
     <div class="expect-item reveal" style="--i:1">
+      <span class="expect-tag">A</span>
+      <div>
+        <div class="expect-title">Authentic <span style="color:var(--grey); font-size:0.7em; font-weight:400;">(Honest)</span></div>
+        <div class="expect-body">Say when you're not sure about something. Say when something's bothering you. Say what you need from the people around you. We can only support each other well if we actually know what's going on with each other &mdash; not just after something goes wrong.</div>
+      </div>
+    </div>
+    <div class="expect-item reveal" style="--i:2">
+      <span class="expect-tag">L</span>
+      <div>
+        <div class="expect-title">Listening <span style="color:var(--grey); font-size:0.7em; font-weight:400;">(Coachable)</span></div>
+        <div class="expect-body">Feedback is a gift, not a critique. When someone points something out, take it in, apply it, and let it actually shape how you show up next time. How you respond in that moment says more about your future here than any one night's performance.</div>
+      </div>
+    </div>
+    <div class="expect-item reveal" style="--i:3">
+      <span class="expect-tag">L</span>
+      <div>
+        <div class="expect-title">Limber <span style="color:var(--grey); font-size:0.7em; font-weight:400;">(Flexible)</span></div>
+        <div class="expect-body">Plans change. Something happens that nobody scripted, and what's needed from you shifts without warning. Being limber means you move with it instead of freezing up when reality doesn't match the plan.</div>
+      </div>
+    </div>
+    <div class="expect-item reveal" style="--i:4">
+      <span class="expect-tag">Y</span>
+      <div>
+        <div class="expect-title">Yielded Effort <span style="color:var(--grey); font-size:0.7em; font-weight:400;">(Effort)</span></div>
+        <div class="expect-body">Show up ready. Show up with the right attitude. Show up to try, even when it's hard. This is the same "Surrendered" and "Sent" posture from the 5S Life &mdash; yielding your effort to the work, and earning your freedom to get creative by putting the work in first. Fundamentals before flair, always.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="expectations" id="standards">
+  <div class="eyebrow">Standards</div>
+  <h2 class="section-title">How we operate</h2>
+  <p class="section-lede">Culture is who we are. These are the practical standards that come with serving on this team &mdash; grounded in the same 5S Life and Essentials rhythms that shape every ministry at Love Church, applied here to call times, dress, shared spaces, and how we communicate our commitment.</p>
+  <div class="expect-list">
+    <div class="expect-item reveal" style="--i:0">
+      <span class="expect-tag">01</span>
+      <div>
+        <div class="expect-title">Expectations of Commitment</div>
+        <div class="expect-body">Just like every serving team at Love Church, we <strong style="color:var(--white);">serve twice monthly, minimum</strong>, and we practice <strong style="color:var(--white);">Sit One, Serve One</strong> &mdash; you're called to serve God but also to sit with Him, so active participation in Encounters (not just serving them) matters for your own discipleship. <strong style="color:var(--white);">Attend Tip Time before you serve</strong> &mdash; you can't pour out what you haven't been filled with. We also operate in the church's three <strong style="color:var(--white);">serving seasons</strong> each year (SZN 1: Jan&ndash;Mar, SZN 2: May&ndash;Jul, SZN 3: Sep&ndash;Nov) &mdash; talk with your Director about your availability each season rather than assuming your spot carries over automatically.</div>
+      </div>
+    </div>
+    <div class="expect-item reveal" style="--i:1">
       <span class="expect-tag">02</span>
       <div>
-        <div class="expect-title">Coachable</div>
-        <div class="expect-body">Feedback is a gift, not a critique. When someone points something out, take it in, apply it, and let it actually shape how you show up next time. How you respond in that moment says more about your future here than any one night's performance.</div>
+        <div class="expect-title">Call Times</div>
+        <div class="expect-body">Broadcast Producer follows the Creative team call time of <strong style="color:var(--white);">5:30 AM</strong>. Camera Operators, Video Director/TD, and Broadcast Graphics arrive prior to Tip Time at <strong style="color:var(--white);">7:45 AM</strong>. Tip Time is not your arrival time &mdash; it's your starting point, already in position and ready to serve. If you're running late or can't make your call time, tell your Director as early as possible. Never a no-call/no-show.</div>
       </div>
     </div>
     <div class="expect-item reveal" style="--i:2">
       <span class="expect-tag">03</span>
       <div>
-        <div class="expect-title">Flexible</div>
-        <div class="expect-body">Plans change. Something happens that nobody scripted, and what's needed from you shifts without warning. Being flexible means you move with it instead of freezing up when reality doesn't match the plan.</div>
+        <div class="expect-title">Dress Code</div>
+        <div class="expect-body"><strong style="color:var(--white);">Camera Operators (mobile or on/near stage): black or dark colors required.</strong> This keeps you visually out of frame and off-platform focus. TD, Graphics, and Producer: dark, neutral colors are strongly encouraged for the same reason &mdash; you're part of what makes the Encounter feel seamless, not part of what's seen. General standard across the board: no ripped clothing, or anything that pulls focus or creates a hazard for your role.</div>
       </div>
     </div>
     <div class="expect-item reveal" style="--i:3">
       <span class="expect-tag">04</span>
       <div>
-        <div class="expect-title">Honest</div>
-        <div class="expect-body">Say when you're not sure about something. Say when something's bothering you. Say what you need from the people around you. We can only support each other well if we actually know what's going on with each other &mdash; not just after something goes wrong.</div>
+        <div class="expect-title">The Dock &amp; Control Room</div>
+        <div class="expect-body">The Dock is the communal space for breakfast and general team hangout during Encounters. The Broadcast control room sits right off the Dock, and the Dock itself serves as the Content team's workspace. Awareness and respect while hanging out on the Dock is important &mdash; excessive noise and distraction can disrupt the workflows of both the Content team and the Broadcast control room. Food and drink are welcome in the control room, just keep it away from equipment and clean up after yourself.</div>
       </div>
     </div>
     <div class="expect-item reveal" style="--i:4">
       <span class="expect-tag">05</span>
       <div>
-        <div class="expect-title">Effort</div>
-        <div class="expect-body">Show up ready. Show up with the right attitude. Show up to try, even when it's hard. And earn your freedom to get creative by putting the work in first &mdash; fundamentals before flair, always.</div>
+        <div class="expect-title">Personal Hygiene</div>
+        <div class="expect-body">Headsets, a shared control room, and close quarters with teammates and guests mean hygiene isn't a personal preference &mdash; it affects the whole team's ability to focus and serve well, and it's part of the guest experience anyone interacting with our team will have. Shower, deodorant, clean attire, and fresh breath are non-negotiable basics of respect for the people around you.</div>
+      </div>
+    </div>
+    <div class="expect-item reveal" style="--i:5">
+      <span class="expect-tag">06</span>
+      <div>
+        <div class="expect-title">Confirm in Planning Center</div>
+        <div class="expect-body">Respond to your scheduled serve requests &mdash; accept or decline &mdash; in Planning Center in a timely manner. This is how the team knows who's actually coming, and it's the primary way you communicate your availability and any conflicts. Reliability here is part of what makes this team trustworthy to the people it serves.</div>
       </div>
     </div>
   </div>
